@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block contenido %}
+    <h1>Listar equipos </h1>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>campeon</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+    {% for Equipo in Equipos %}
+            <tr> <!-- table row -->
+                <td>
+                    {{ Equipo.nombre }}
+                    {% if Equipo.campeon %}
+                        <span class="badge bg-danger">Campeon </span>
+                    {% endif %}
+                </td>
+                <td>
+                    <img src="{% static Equipo.imagen %}"
+                         alt="imagen"
+                         class="img-thumbnail"
+                         width="200"
+                    >
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
